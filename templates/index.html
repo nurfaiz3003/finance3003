@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+        </tr>
+        {% for record in records %}
+        <tr>
+            <td style="text-transform: uppercase;">{{ record.symbol|e }}</td>
+            <td>{{ record.name|e }}</td>
+            <td>{{ record.shares|e }}</td>
+            <td>${{ record.price|e }}</td>
+            <td>${{ record.total|e }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td style="font-weight: bold;">CASH</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>${{ cash }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="font-weight: bold;">${{ sum }}</td>
+        </tr>
+    </table>
+{% endblock %}
